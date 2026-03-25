@@ -1,0 +1,14 @@
+#include <stdio.h>
+int main()
+{
+    int veta[3];
+
+    for (int i=1;i<=3;i++){
+        printf("[%d]: ", i);
+        scanf("%d", &veta[i]);
+    }
+    for (int i=3;i>=1;i--){
+        printf("%d ", veta[i]);
+    }
+    return 0;
+}
