@@ -1,0 +1,67 @@
+#include <stdio.h>
+int main(){
+    int maior_idade = 0, menor_idade = 0;
+    char nome_velho[50], nome_novo[50];
+    struct Pessoa{
+        char nome[50];
+        int idade;
+    }p1, p2, p3, p4, p5;
+
+    printf("Qual seu nome 01: ");
+    fgets(p1.nome, 50, stdin);
+    p1.nome[strcspn(p1.nome, "\n")] = '\0'; // Remove o caractere de nova linha
+    printf("Qual sua idade 01: ");
+    scanf("%d", &p1.idade);
+    getchar(); // Limpa o buffer do teclado para evitar que o próximo fgets seja pulado
+    
+    printf("Qual seu nome 02: ");
+    fgets(p2.nome, 50, stdin);
+    p2.nome[strcspn(p2.nome, "\n")] = '\0'; // Remove o caractere de nova linha
+    printf("Qual sua idade 02: ");
+    scanf("%d", &p2.idade);
+    getchar();
+
+    printf("Qual seu nome 03: ");
+    fgets(p3.nome, 50, stdin);
+    p3.nome[strcspn(p3.nome, "\n")] = '\0'; // Remove o caractere de nova linha
+    printf("Qual sua idade 03: ");
+    scanf("%d", &p3.idade);
+    getchar();
+
+    printf("Qual seu nome 04: ");
+    fgets(p4.nome, 50, stdin);
+    p4.nome[strcspn(p4.nome, "\n")] = '\0'; // Remove o caractere de nova linha
+    printf("Qual sua idade 04: ");
+    scanf("%d", &p4.idade);
+    getchar();
+
+    printf("Qual seu nome 05: ");
+    fgets(p5.nome, 50, stdin);
+    p5.nome[strcspn(p5.nome, "\n")] = '\0'; // Remove o caractere de nova linha
+    printf("Qual sua idade 05: ");
+    scanf("%d", &p5.idade);
+    getchar();
+
+    struct Pessoa vetp[5] = {p1, p2, p3, p4, p5};
+
+    for(int i=0; i<5; i++){
+        if(i == 0){
+            maior_idade = vetp[i].idade;
+            menor_idade = vetp[i].idade;
+            strcpy(nome_velho, vetp[i].nome);
+            strcpy(nome_novo, vetp[i].nome);
+        } else {
+            if (vetp[i].idade > maior_idade){
+                maior_idade = vetp[i].idade;
+                strcpy(nome_velho, vetp[i].nome);
+            } else if (vetp[i].idade < menor_idade){
+                menor_idade = vetp[i].idade;
+                strcpy(nome_novo, vetp[i].nome);
+            }
+        }
+    }
+    
+    printf("Pessoa mais velha: %s com %d anos", nome_velho, maior_idade);
+    printf("\nPessoa mais nova: %s com %d anos", nome_novo, menor_idade);
+    return 0;
+}
