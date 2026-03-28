@@ -1,0 +1,46 @@
+/*
+O objetivo deste código é receber o nome de 3 alunos diferente e três notas de cada um, tudo será
+armazenado em vetores e o aluno terá uma struct para armazenar seus atributos.
+Após receber todos os dados, ele calcula a média e utiliza uma estrutura de condição para dar o 
+Status do aluno de aprovado ou reprovado
+*/
+#include <stdio.h>
+int main(){
+    float acm = 0;
+    struct Aluno{
+        char nome[50];
+        char status[20];
+        float nota[3];
+        float media;
+    };
+    struct Aluno a1;
+    struct Aluno a2;
+    struct Aluno a3;
+
+    struct Aluno vetAluno[3] = {a1, a2, a3};
+    
+    for(int i=0; i<3; i++){
+        printf("Digite o nome do aluno %d: ", i+1);
+        fgets(vetAluno[i].nome, 50, stdin);
+        vetAluno[i].nome[strcspn(vetAluno[i].nome, "\n")] = '\0'; // Remove o caractere de nova linha
+        for (int k=0; k<3; k++){
+            printf("n%d: ", k+1);
+            scanf("%f", &vetAluno[i].nota[k]);
+            acm = acm + vetAluno[i].nota[k];
+        }
+        getchar();
+        vetAluno[i].media = acm / 3;
+        if(vetAluno[i].media >= 6){
+            strcpy(vetAluno[i].status, "aprovado");
+        } else {
+            strcpy(vetAluno[i].status, "reprovado");
+        }
+        acm = 0;
+    }
+
+    for(int i=0; i<3; i++){
+        printf("Aluno: %s\n", vetAluno[i].nome);
+        printf("Media: %.2f\n", vetAluno[i].media);
+        printf("Status: %s\n", vetAluno[i].status);
+    }
+}
