@@ -1,0 +1,24 @@
+#include <stdio.h>
+int main(){
+
+    //1- Aqui eu criei a estrutura, "Pessoa" é o nome, "p1" vai ser minha primeira variável ou objeto da minha estrutura.
+    struct Pessoa
+    {
+        char nome[50];
+        int idade;
+    } p1 = {"Pedro", 18};
+
+    //2 - Aqui eu ja declarei a estruruta em cima e estou apenas criando o objeto e atribuido valores. OBS: strcpy(objeto.string,"nome") é usado para ler String e guardar no atributo do objeto
+    struct Pessoa p2;
+    strcpy(p2.nome, "Arlando");
+    p2.idade = 19;
+
+    //3 - Aqui eu criei o objeto e atribui os vlores direto, sem precisar usar o strcpy, pois eu já declarei a estrutura e o objeto na mesma linha.
+    struct Pessoa p3 = {"Maria", 20};
+
+    //imprimir na tela
+    printf("nome: %s idade: %d", p1.nome, p1.idade);
+    printf("\nnome: %s idade: %d", p2.nome, p2.idade);
+    printf("\nnome: %s idade: %d", p3.nome, p3.idade);
+    return 0;
+}
