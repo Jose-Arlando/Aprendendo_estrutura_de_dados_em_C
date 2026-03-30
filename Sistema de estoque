@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <string.h>
+int main(){
+
+    int op, max = 0;
+    float soma_v = 0;
+    struct Produto{
+        char nome[50];
+        int quantidade;
+        float preco;
+    } p1;
+    struct Produto vetProduto[100];
+    do{
+        printf("\n1 - cadastrar produto");
+        printf("\n2 - listar produtos");
+        printf("\n3 - calcula valor de estoque");
+        printf("\n0 - sair\n");  
+        scanf("%d", &op);
+        getchar();
+
+        if(op == 1){
+            printf("\nDigite o nome do produto: ");
+            fgets(p1.nome, 50, stdin);
+            p1.nome[strcspn(p1.nome, "\n")] = '\0';
+            printf("\nDigite a quantidade no estoque: ");
+            scanf("%d", &p1.quantidade);
+            printf("\nDigite o valor: R$");
+            scanf("%f", &p1.preco);
+            getchar();
+            
+            vetProduto[max] = p1;
+            max = max + 1;        
+        } else if (op == 2){
+            for(int i=0;i<max;i++){
+                printf("-----------------------------------\n");
+                printf("Produto: %s\n", vetProduto[i].nome);
+                printf("Quantidade: %d\n", vetProduto[i].quantidade);
+                printf("Preço: R$%.2f\n", vetProduto[i].preco);
+                printf("-----------------------------------\n");
+            }
+        } else if(op == 3){
+            for(int i=0;i<max;i++){
+                soma_v = soma_v + (vetProduto[i].quantidade * vetProduto[i].preco);
+            }
+            printf("\nValor total do estoque: R$%.2f\n", soma_v);
+            soma_v = 0;
+        }
+    } while (op != 0);
+    printf("obrigado!");
+    return 0;
+}
